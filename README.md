@@ -45,6 +45,9 @@ The Autoencoder is trained mainly on normal data so that it can:
 
 A Gradio-based UI is provided to input custom values and check whether they are anomalies.
 
+<img width="1376" height="564" alt="image" src="https://github.com/user-attachments/assets/04b88abc-9602-470e-9920-86f6157df0f0" />
+
+
 ## Result
 
 The trained Autoencoder differentiates normal and abnormal inputs based on reconstruction error:  
