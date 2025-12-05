@@ -1,35 +1,78 @@
-# Comment_anomaly_detection
-
 Overview
 
-This project focuses on detecting anomalies using an Autoencoder model built with TensorFlow/Keras. The model learns normal data patterns and identifies anomalies using reconstruction error. A Gradio interface is provided for interactive testing.
+This project focuses on detecting anomalies using an Autoencoder deep learning model. The model learns the normal pattern of data and identifies abnormal inputs using reconstruction error. A Gradio user interface is included for interactive anomaly testing.
 
-Features
+Objective
 
-Autoencoder-based anomaly detection
+The objective of this project is to build a machine learning model capable of identifying anomalies by analyzing deviations from normal data patterns.
 
-Data preprocessing using NumPy and Pandas
+Dataset Details
 
-Model training and evaluation using TensorFlow
+The dataset contains numerical values representing normal and abnormal behavior.
+The Autoencoder is trained mainly on normal data so that it can:
 
-Loss visualization using Matplotlib
+Learn the distribution of normal values
 
-Interactive Gradio UI for anomaly testing
+Reconstruct normal data accurately
 
-Threshold-based reconstruction error classification
+Give high reconstruction error for anomalies
 
-Technologies Used
+Dataset Features
 
-Python
+Numerical data points
 
-NumPy
+Abnormal samples for testing
 
-Pandas
+Preprocessed and scaled values
 
-TensorFlow
+Methodology
+Autoencoder Model
 
-Scikit-Learn
+Encoder compresses input
 
-Matplotlib
+Decoder reconstructs it
 
-Gradio
+High reconstruction error = anomaly
+
+Data Preprocessing
+
+Data cleaning
+
+Scaling
+
+Structured using NumPy & Pandas
+
+Model Training
+
+Training on normal samples
+
+Loss = Mean Squared Error (MSE)
+
+Loss curve visualized using Matplotlib
+
+Gradio Interface
+
+A Gradio-based UI is provided to input custom values and check whether they are anomalies.
+
+Result
+
+The trained Autoencoder differentiates normal and abnormal inputs based on reconstruction error:
+
+Low error → Normal
+
+High error → Anomaly
+
+The model shows stable training and clear anomaly separation.
+
+Conclusion
+
+This anomaly detection system is effective for identifying unusual patterns in data.
+It can be used for:
+
+Quality inspection
+
+Monitoring systems
+
+Error detection
+
+Real-time anomaly alerts
