@@ -1,67 +1,104 @@
-## Overview
+# Comment Toxicity Detection System
 
-This project focuses on detecting anomalies using an Autoencoder deep learning model.  
-The model learns the normal pattern of data and identifies abnormal inputs using reconstruction error.  
-A Gradio user interface is included for interactive anomaly testing.
+## AIM
+To develop an AI-based system capable of detecting and classifying toxic comments in real-time,  
+ensuring safer online interactions.
 
-## Objective
+---
 
-The objective of this project is to build a machine learning model capable of identifying anomalies by analyzing deviations from normal data patterns.
+## OBJECTIVES
+1. Create a hybrid CNN–RNN (LSTM) model for comment classification.  
+2. Classify comments into toxicity levels: **toxic, severe toxic, obscene, threat, insult, identity_hate**.  
+3. Deploy the model for real-time use with a user-friendly interface.  
+4. Improve detection of disguised toxic content using special characters.  
+5. Ensure platform adaptability, scalability, and efficient deployment.  
 
-## Dataset Details
+---
 
-The dataset contains numerical values representing normal and abnormal behavior.  
-The Autoencoder is trained mainly on normal data so that it can:
+## Dataset Description
 
-- Learn the distribution of normal values  
-- Reconstruct normal data accurately  
-- Give high reconstruction error for anomalies  
+The dataset used for this project is a multi-label text classification dataset containing online comments.  
+Each comment is labeled across six toxicity categories:
 
-## Dataset Features
+- **toxic**  
+- **severe_toxic**  
+- **obscene**  
+- **threat**  
+- **insult**  
+- **identity_hate**
 
-- Numerical data points  
-- Abnormal samples for testing  
-- Preprocessed and scaled values  
+### Dataset Characteristics
+- Contains thousands of user-generated comments.  
+- Each comment may belong to **multiple toxicity categories**.  
+- Includes clean (non-toxic) and harmful (toxic) samples.  
+- Used for training an NLP model capable of understanding context, offensive patterns, and hidden toxic variations.  
 
-## Methodology
+### Data Preprocessing Steps
+- Removal of special characters (optional, to detect disguised toxicity).  
+- Text normalization (lowercasing, trimming).  
+- Tokenization and padding for equal-length sequences.  
+- Conversion to embedding vectors for model input.  
 
-### **Autoencoder Model**
-- Encoder compresses input  
-- Decoder reconstructs it  
-- High reconstruction error = anomaly  
+---
 
-### **Data Preprocessing**
-- Data cleaning  
-- Scaling  
-- Structured using NumPy & Pandas  
+## Model Architecture
+
+### • Input Layer  
+Accepts tokenized and embedded comments, converting raw text into numerical form suitable for neural network processing.
+
+### • CNN Layer  
+Extracts local linguistic patterns and phrase-level features indicating toxic behavior.
+
+### • LSTM Layer  
+Captures long-term dependencies and contextual relationships across sequences of words.
+
+### • Dense Layer  
+Processes extracted features to perform multi-label classification across toxicity categories.
+
+### • Output Layer  
+Produces final predictions, mapping each comment to its respective toxicity labels.
+
+---
 
 ## Model Training
 
-- Training on normal samples  
-- Loss = Mean Squared Error (MSE)  
-- Loss curve visualized using Matplotlib  
+### Training Process
+- The dataset is split into **training and validation sets**.  
+- Comments are tokenized and converted into padded sequences.  
+- An embedding layer transforms text into vector representations.  
+- CNN extracts local features; LSTM captures sequence dependencies.  
+- Multi-label classification uses **sigmoid activation** to output probabilities for each toxicity class.  
 
-## Gradio Interface
+### Training Visualization
+- Training & validation loss curves  
+- Accuracy plots  
+- Confusion matrix for each label  
+These visualizations help monitor performance and avoid overfitting.
 
-A Gradio-based UI is provided to input custom values and check whether they are anomalies.
+---
 
-<img width="1376" height="564" alt="image" src="https://github.com/user-attachments/assets/04b88abc-9602-470e-9920-86f6157df0f0" />
+## System Overview
+The **Comment Toxicity Detection System** promotes safer online communication by automatically identifying harmful or offensive comments.  
+Using:
+
+- Natural Language Processing (NLP)  
+- A hybrid CNN + LSTM deep learning model  
+- A Gradio-based real-time user interface  
+
+the system ensures accurate classification, smooth deployment, and instant predictions.
+
+---
+
+## Key Features
+- Instantly check comment toxicity through a simple interactive interface.  
+- Moderators can take quick action based on prediction results.  
+- Admins can update or retrain the model with ease.  
+- Real-time interface ensures fast and actionable feedback.  
+- Deep learning approach delivers high accuracy and adaptability.  
+
+---
+
+## Result 
+<img width="876" height="360" alt="image" src="https://github.com/user-attachments/assets/a27e0636-6c20-44bf-ab90-1bea52ffd96c" />
 
 
-## Result
-
-The trained Autoencoder differentiates normal and abnormal inputs based on reconstruction error:  
-- Low error → Normal  
-- High error → Anomaly  
-
-The model shows stable training and clear anomaly separation.
-
-## Conclusion
-
-This anomaly detection system is effective for identifying unusual patterns in data.  
-It can be used for:
-
-- Quality inspection  
-- Monitoring systems  
-- Error detection  
-- Real-time anomaly alerts  
